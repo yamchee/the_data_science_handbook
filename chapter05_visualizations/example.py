@@ -22,12 +22,12 @@ sums_by_species = df.groupby('species').sum()
 var = 'sepal width (cm)'
 sums_by_species[var].plot(kind='pie', fontsize=20)
 plt.title('Breakdown for ' + var, fontsize=25)
-plt.savefig('iris_pie_for_one_variable.jpg')
+plt.savefig('iris_pie_for_one_variable.png')
 plt.close()
 sums_by_species = df.groupby('species').sum()
 sums_by_species.plot(kind='pie', subplots=True)
 plt.title('Total Measurements, by Species')
-plt.savefig('iris_pie_for_each_variable.jpg')
+plt.savefig('iris_pie_for_each_variable.png')
 plt.close()
 
 
@@ -38,13 +38,13 @@ var = 'sepal width (cm)'
 sums_by_species[var].plot(kind='bar', fontsize=15,
 rot=30)
 plt.title('Breakdown for ' + var, fontsize=20)
-plt.savefig('iris_bar_for_one_variable.jpg')
+plt.savefig('iris_bar_for_one_variable.png')
 plt.close()
 sums_by_species = df.groupby('species').sum()
 sums_by_species.plot(
     kind='bar', subplots=True, fontsize=12)
 plt.suptitle('Total Measurements, by Species')
-plt.savefig('iris_bar_for_each_variable.jpg')
+plt.savefig('iris_bar_for_each_variable.png')
 plt.close()
 
 
@@ -59,7 +59,7 @@ for spec in df['species'].unique():
     kind='hist', alpha=0.4, label=spec)
 plt.legend(loc='upper right')
 plt.suptitle('Petal Length by Species')
-plt.savefig('iris_hist_by_spec.jpg')
+plt.savefig('iris_hist_by_spec.png')
 
 # Means, quantiles, etc.
 
@@ -78,9 +78,10 @@ Clean_Avg = col[(col>Perc25)&(col<Perc75)].mean()
 
 # Boxplots
 
-col = ’sepal length (cm)’
+col = 'sepal length (cm)'
 df['ind'] = pd.Series(df.index).apply(lambda i: i% 50)
-df.pivot('ind','species')[col].plot(kind='box') plt.show()
+df.pivot('ind','species')[col].plot(kind='box')
+plt.show()
 
 
 # Scatterplots
@@ -115,7 +116,7 @@ df = pd.DataFrame(bs.data, columns=bs.feature_names)
 df['MEDV'] = bs.target
 # Normal Scatterplot
 df.plot(x='CRIM', y='MEDV', kind='scatter', logx=True)
-plt.title(’Crime rate on logarithmic axis’)
+plt.title('Crime rate on logarithmic axis')
 plt.show()
 
 # Scatter matrices
